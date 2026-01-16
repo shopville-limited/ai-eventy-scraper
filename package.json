@@ -1,0 +1,14 @@
+{
+  "name": "ai-eventy-scraper",
+  "version": "1.0.0",
+  "description": "Scraper pro AI akce z aiakce.cz",
+  "type": "module",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
