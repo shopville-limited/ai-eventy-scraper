@@ -1,0 +1,29 @@
+name: Denní scraping AI akcí
+
+on:
+  schedule:
+    # Spustí se každý den v 6:00 ráno (UTC)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Umožní manuální spuštění
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout kódu
+        uses: actions/checkout@v4
+      
+      - name: Nastavení Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Instalace závislostí
+        run: npm install
+      
+      - name: Spuštění scraperu
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: npm start
